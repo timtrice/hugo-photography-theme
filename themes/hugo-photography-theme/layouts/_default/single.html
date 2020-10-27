@@ -1,6 +1,84 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ partial "metadata.html" . }}
-<br><br>
+<br />
+{{ $dateTime := .PublishDate.Format "2006-01-02" }}
+{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+<time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
+<br />
+<img src="./{{ .Params.Image.src }}" alt="{{ .Params.Image.caption }}" />
+<br />
+{{ with .Params.tags }}
+{{ range . }}
+{{ $href := print (absURL "tags/") (urlize .) }}
+<a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href }}">{{ . }}</a>
+{{ end }}
+{{ end }}
+<br />
+<img src="./atlas.png" src="Atlas" />
+<br />
+Capture Gear:
+<ul>
+  <li>Telescope: {{ .Params.Telescope }}</li>
+  <li>Mount: {{ .Params.Mount }}</li>
+  <li>Camera: {{ .Params.Camera }}</li>
+  <li>Guide Scope: {{ .Params.guide_scope }}</li>
+  <li>Guide Camera: {{ .Params.guide_camera }}</li>
+  <li>
+    Filters:
+      <ul>
+        {{ with .Params.filters }}
+        {{ range . }}
+        <li>{{ print . }}</li>
+        {{ end }}
+        {{ end }}
+      </ul>
+  </li>
+  <li>
+    Accessories:
+      <ul>
+        {{ with .Params.accessories }}
+        {{ range . }}
+        <li>{{ print . }}</li>
+        {{ end }}
+        {{ end }}
+      </ul>
+  </li>
+</ul>
+<br />
+Capture Dates (UTC):
+<ul>
+{{ with .Params.capture_dates }}
+  {{ range $date_key, $date_value := . }}
+    <li>{{ $date_key }}</li>
+    <ul>
+      {{ with $date_value }}
+        {{ range $filter_key, $filter_value := .filters }}
+          <li>{{ upper $filter_key }}</li>
+          <ul>
+            <li>Frames: {{ $filter_value.frames }}</li>
+            <li>Exposure: {{ $filter_value.exposure }}s</li>
+            <li>ISO/Gain: {{ $filter_value.iso }}</li>
+            <li>Moon Age: {{ $filter_value.moon_age }}hrs</li>
+            <li>Moon Phase: {{ mul $filter_value.moon_phase 100 }}%</li>
+          </ul>
+        {{ end }}
+      {{ end }}
+    </ul>
+  {{ end }}
+{{ end }}
+</ul>
+<br />
+Astrometry Details:
+<ul>
+  <li>Astrometry: {{ .Params.astrometry_job }}</li>
+  <li>RA: {{ .Params.ra }}</li>
+  <li>DEC: {{ .Params.dec }}</li>
+  <li>Resolution: {{ .Params.resolution }}"/px</li>
+  <li>Rotation: {{ .Params.rotation }}&deg;</li>
+  <li>Field Radius: {{ .Params.field_radius }}&deg;</li>
+  <li>Dimensions: {{ .Params.size.width }}x{{ .Params.size.height }}px</li>
+  <li>Seeing: {{ .Params.seeing }}</li>
+  <li>Bortle: {{ .Params.bortle }}</li>
+</ul>
 {{ .Content }}
 {{ end }}

@@ -4,15 +4,62 @@ title = "My New Hugo Site"
 theme = "hugo-photography-theme"
 
 [menu]
+
+# Main navigational menus
   [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
+    identifier = "gallery"
+    name = "Gallery"
+    title = "Gallery"
+    url = "/gallery/"
+#    pre = "far fa-images"
+    weight = 100
+
   [[menu.main]]
-    name = "Posts"
-    url = "/posts/"
-    weight = 2
+    identifier = "articles"
+    name = "Articles"
+    title = "Articles"
+    url = "/articles/"
+    weight = 500
+
   [[menu.main]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 3
+    identifier = "tutorials"
+    name = "Tutorials"
+    title = "Tutorials"
+    url = "/tutorials/"
+    weight = 750
+
+  [[menu.main]]
+    identifier = "reviews"
+    name = "Reviews"
+    title = "Reviews"
+    url = "/reviews/"
+    weight = 1000
+
+# Social navigational menus
+  [[menu.social]]
+    identifier = "twitter"
+    title = "Twitter"
+    url = "https://twitter.com/timtrice/"
+    pre = "fab fa-twitter-square"
+    weight = 100
+
+  [[menu.social]]
+    identifier = "instagram"
+    title = "Instagram"
+    url = "https://www.instagram.com/tim.trice/"
+    pre = "fab fa-instagram-square"
+    weight = 500
+
+  [[menu.social]]
+    identifier = "youtube"
+    title = "YouTube"
+    url = "https://www.youtube.com/timtrice"
+    pre = "fab fa-youtube-square"
+    weight = 750
+
+  [[menu.social]]
+    identifier = "contact"
+    title = "Contact"
+    url = "/contact.html"
+    pre = "fas fa-envelope-square"
+    weight = 1000

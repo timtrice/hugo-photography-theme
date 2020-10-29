@@ -2,7 +2,7 @@
 <section class="my-1">
   <div class="container">
     <div class="row justify-content-md-center">
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <div id="carousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -13,6 +13,7 @@
           <div class="carousel-inner bg-secondary">
             {{ range $section, $taxonomy := .Site.Sections }}
               {{ range first 1 $taxonomy.Pages }}
+              {{ $url := .Permalink}}
               <div class="carousel-item{{ if eq $section 0 }} active{{ end }}">
                 {{ $image := (print .RelPermalink .Params.image.src) }}
                   {{ with .Resources }}
@@ -20,13 +21,10 @@
                       {{ $photo := .Resize "x410" }}
                       {{ with $photo }}
                         {{ $src := .Permalink }}
-                        <img src="{{ $src }}" alt="{{ .Title }}" class="mx-auto d-block" />
+                        <a href="{{ $url }}"><img src="{{ $src }}" alt="{{ .Title }}" class="mx-auto d-block" /></a>
                       {{ end }}
                     {{ end }}
                   {{ end }}
-                  <div class="carousel-caption d-none d-sm-block bg-white text-muted rounded-pill">
-                    <h5 class="px-5">{{ .Title }}</h5>
-                  </div>
                 </div>
               {{ end }}
             {{ end }}

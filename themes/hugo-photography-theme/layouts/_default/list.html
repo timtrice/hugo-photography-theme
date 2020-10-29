@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{ partial "breadcrumbs.html" . }}
+<main role="main">
+    <div class="album py-5">
+        <div class="container">
+          <h1>{{ .Summary }}</h1>
+          <div class="row">
+            {{ range .Pages.ByPublishDate.Reverse }}
+            <div class="col-md-6">
+              <div class="text-center mb-4">
+                <a href="{{ .RelPermalink }}" title="{{ .Title }} ">
+                  {{ $image := (print .RelPermalink .Params.image.src) }}
+                  {{ with .Resources }}
+                    {{ with .GetMatch "{*.jpg,*.png}" }}
+                      {{ $photo := .Resize "475x" }}
+                      {{ with $photo }}
+                        {{ $src := .Permalink }}
+                        <img src="{{ $src }}" alt="{{ .Title }}"/>
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                </a>
+                <div class="card-body text-left">
+                  <h2><a href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a></h2>
+                  <p class="card-text">{{ .Summary }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Read more...</a>
+                    </div>
+                    <small class="text-muted">{{ .ReadingTime }} minutes</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+    </div>
+</main> 
+{{ end }}

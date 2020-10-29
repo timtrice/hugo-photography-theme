@@ -1,3 +1,67 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Tim Trice Astrophotography"
+description = "Astrophotography, tutorials and reviews for beginner and intermediate astrophotographers."
+theme = "hugo-photography-theme"
+
+[menu]
+
+# Main navigational menus
+  [[menu.main]]
+    identifier = "gallery"
+    name = "Gallery"
+    title = "Test"
+    url = "/gallery/"
+#    pre = "far fa-images"
+    weight = 100
+    description = "This is a test"
+
+  [[menu.main]]
+    identifier = "articles"
+    name = "Articles"
+    title = "Articles"
+    url = "/articles/"
+    weight = 500
+
+  [[menu.main]]
+    identifier = "tutorials"
+    name = "Tutorials"
+    title = "Tutorials"
+    url = "/tutorials/"
+    weight = 750
+
+  [[menu.main]]
+    identifier = "reviews"
+    name = "Reviews"
+    title = "Reviews"
+    url = "/reviews/"
+    weight = 1000
+
+# Social navigational menus
+  [[menu.social]]
+    identifier = "twitter"
+    title = "Twitter"
+    url = "https://twitter.com/timtrice/"
+    pre = "fab fa-twitter-square"
+    weight = 100
+
+  [[menu.social]]
+    identifier = "instagram"
+    title = "Instagram"
+    url = "https://www.instagram.com/tim.trice/"
+    pre = "fab fa-instagram-square"
+    weight = 500
+
+  [[menu.social]]
+    identifier = "youtube"
+    title = "YouTube"
+    url = "https://www.youtube.com/timtrice"
+    pre = "fab fa-youtube-square"
+    weight = 750
+
+  [[menu.social]]
+    identifier = "contact"
+    title = "Contact"
+    url = "/contact.html"
+    pre = "fas fa-envelope-square"
+    weight = 1000

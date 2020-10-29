@@ -1,0 +1,50 @@
+{{ define "main" }}
+<section class="my-1">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-8">
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+            <li data-target="#carousel" data-slide-to="3"></li>
+          </ol>
+          <div class="carousel-inner bg-secondary">
+            {{ range $section, $taxonomy := .Site.Sections }}
+              {{ range first 1 $taxonomy.Pages }}
+              <div class="carousel-item{{ if eq $section 0 }} active{{ end }}">
+                {{ $image := (print .RelPermalink .Params.image.src) }}
+                  {{ with .Resources }}
+                    {{ with .GetMatch "{*.jpg,*.png}" }}
+                      {{ $photo := .Resize "x410" }}
+                      {{ with $photo }}
+                        {{ $src := .Permalink }}
+                        <img src="{{ $src }}" alt="{{ .Title }}" class="mx-auto d-block" />
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                  <div class="carousel-caption d-none d-sm-block bg-white text-muted rounded-pill">
+                    <h5 class="px-5">{{ .Title }}</h5>
+                  </div>
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+          <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+          
+{{ end }}

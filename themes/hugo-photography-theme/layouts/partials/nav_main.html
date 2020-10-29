@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="/" title="{{ .Title }}"><img src="/logo.png" height="30" alt="{{ .Title }}" /></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {{ range .Site.Menus.main.ByWeight }}
+      <a class="nav-link" href="{{ .URL }}" title="{{ .Title }}">{{ if .Pre }} {{ $icon := printf "<i class=\"%s\"></i> " .Pre | safeHTML }}{{ $icon }}{{ end }}{{ $text := print .Name | safeHTML }}{{ $text }}</a>
+      {{ end }}
+    </div>
+  </div>
+  {{- partial "nav_social.html" . -}}
+</nav>

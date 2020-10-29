@@ -1,6 +1,7 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Tim Trice Astrophotography"
+description = "Astrophotography, tutorials and reviews for beginner and intermediate astrophotographers."
 theme = "hugo-photography-theme"
 
 [menu]
@@ -9,10 +10,11 @@ theme = "hugo-photography-theme"
   [[menu.main]]
     identifier = "gallery"
     name = "Gallery"
-    title = "Gallery"
+    title = "Test"
     url = "/gallery/"
 #    pre = "far fa-images"
     weight = 100
+    description = "This is a test"
 
   [[menu.main]]
     identifier = "articles"

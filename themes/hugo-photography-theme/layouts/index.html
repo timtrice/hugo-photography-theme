@@ -6,7 +6,7 @@
 
       <div class="row">
         {{ range $section, $taxonomy := .Site.Sections }}
-          {{ range $taxonomy.Pages }}
+          {{ range $taxonomy.Pages.ByDate.Reverse }}
             {{ $url := .Permalink}}
             {{ $title := .Title }}
             {{ $summary := .Summary }}
@@ -16,12 +16,12 @@
                 {{ $image := (print .RelPermalink .Params.image.src) }}
                 {{ with .Resources }}
                   {{ with .GetMatch "{*.jpg,*.png}" }}
-                    {{ $photo := .Resize "x225" }}
+                    {{ $photo := .Resize "x195" }}
                     {{ with $photo }}
                       {{ $src := .Permalink }}
                       <a href="{{ $url }}" title="{{ $summary }}"><img src="{{ $src }}" alt="{{ $summary }}" class="mx-auto d-block" /></a>
                       <div class="card-body">
-                        <h2>{{ $title }}</h2>
+                        <h2><a href="{{ $url }}" title="{{ $title }}">{{ $title }}</a></h2>
                         <p class="card-text">{{ $summary }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
@@ -29,6 +29,7 @@
                           </div>
                           <small class="text-muted">{{ $reading_time }} mins</small>
                         </div>
+                      </div>
                     {{ end }}
                   {{ end }}
                 {{ end }}

@@ -11,7 +11,7 @@
                   {{ $image := (print .RelPermalink .Params.image.src) }}
                   {{ with .Resources }}
                     {{ with .GetMatch "{*.jpg,*.png}" }}
-                      {{ $photo := .Resize "x195" }}
+                      {{ $photo := .Resize "x230" }}
                       {{ with $photo }}
                         {{ $src := .Permalink }}
                         <img src="{{ $src }}" alt="{{ .Title }}"/>

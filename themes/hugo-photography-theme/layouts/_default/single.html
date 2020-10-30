@@ -1,7 +1,35 @@
 {{ define "main" }}
-{{ partial "breadcrumbs.html" . }}
-<h1>{{ .Title }}</h1>
-{{ partial "metadata.html" . }}
-<br><br>
-{{ .Content }}
+<main role="main" class="container mt-1">
+  <div class="text-center">
+    {{ $title := .Title }}
+    {{ with .Resources }}
+      {{ with .GetMatch "{*.jpg,*.png}" }}
+        {{ $url := .Permalink }}
+        {{ $photo := .Resize "x620" }}
+        {{ with $photo }}
+          {{ $src := .Permalink }}
+          <a href="{{ $url }}" title="{{ $title }}"><img class="img-fluid" src="{{ $src }}" /></a>
+          {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+
+  <div>
+    <div class="col-sm-8 offset-2">
+      <h2>{{ .Title }}</h2>
+      <p class="blog-post-meta">{{ .PublishDate.Format "January 2, 2006" }}</p>
+      {{ .Content }}
+      <span>
+        <a href="{{ .Params.stellarium }}" title="View in Stellarium" target="_blank"><img src="/images/stellarium.png" /></a>
+        {{ with .Params.tags }}
+          {{ range . }}
+            {{ $href := print (absURL "tags/") (urlize .) }}
+            <a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href }}">{{ . }}</a>
+          {{ end }}
+        {{ end }}
+      </span>
+    </div>
+  </div>
+
+</main>
 {{ end }}

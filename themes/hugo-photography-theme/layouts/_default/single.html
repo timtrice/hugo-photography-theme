@@ -5,7 +5,7 @@
     {{ with .Resources }}
       {{ with .GetMatch "{*.jpg,*.png}" }}
         {{ $url := .Permalink }}
-        {{ $photo := .Resize "x620" }}
+        {{ $photo := .Resize "x735" }}
         {{ with $photo }}
           {{ $src := .Permalink }}
           <a href="{{ $url }}" title="{{ $title }}"><img class="img-fluid" src="{{ $src }}" /></a>

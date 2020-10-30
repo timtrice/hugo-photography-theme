@@ -16,7 +16,7 @@
                 {{ $image := (print .RelPermalink .Params.image.src) }}
                 {{ with .Resources }}
                   {{ with .GetMatch "{*.jpg,*.png}" }}
-                    {{ $photo := .Resize "x195" }}
+                    {{ $photo := .Resize "x230" }}
                     {{ with $photo }}
                       {{ $src := .Permalink }}
                       <a href="{{ $url }}" title="{{ $summary }}"><img src="{{ $src }}" alt="{{ $summary }}" class="mx-auto d-block" /></a>

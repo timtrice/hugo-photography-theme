@@ -7,35 +7,35 @@ theme = "hugo-photography-theme"
 [menu]
 
 # Main navigational menus
-  [[menu.main]]
-    identifier = "gallery"
-    name = "Gallery"
-    title = "Test"
-    url = "/gallery/"
+#  [[menu.main]]
+#    identifier = "gallery"
+#    name = "Gallery"
+#    title = "Test"
+#    url = "/gallery/"
 #    pre = "far fa-images"
-    weight = 100
-    description = "This is a test"
+#    weight = 100
+#    description = "This is a test"
 
-  [[menu.main]]
-    identifier = "articles"
-    name = "Articles"
-    title = "Articles"
-    url = "/articles/"
-    weight = 500
+#  [[menu.main]]
+#    identifier = "articles"
+#    name = "Articles"
+#    title = "Articles"
+#    url = "/articles/"
+#    weight = 500
 
-  [[menu.main]]
-    identifier = "tutorials"
-    name = "Tutorials"
-    title = "Tutorials"
-    url = "/tutorials/"
-    weight = 750
+#  [[menu.main]]
+#    identifier = "tutorials"
+#    name = "Tutorials"
+#    title = "Tutorials"
+#    url = "/tutorials/"
+#    weight = 750
 
-  [[menu.main]]
-    identifier = "reviews"
-    name = "Reviews"
-    title = "Reviews"
-    url = "/reviews/"
-    weight = 1000
+#  [[menu.main]]
+#    identifier = "reviews"
+#    name = "Reviews"
+#    title = "Reviews"
+#    url = "/reviews/"
+#    weight = 1000
 
 # Social navigational menus
   [[menu.social]]
